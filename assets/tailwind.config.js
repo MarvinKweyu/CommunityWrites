@@ -10,7 +10,11 @@ module.exports = {
     '../lib/*_web/**/*.*ex'
   ],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+      center: true,
+    },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

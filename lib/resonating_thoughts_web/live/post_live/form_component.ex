@@ -29,6 +29,8 @@ defmodule ResonatingThoughtsWeb.PostLive.FormComponent do
   end
 
   defp save_post(socket, :edit, post_params) do
+    IO.inspect(post_params)
+
     case Blog.update_post(socket.assigns.post, post_params) do
       {:ok, _post} ->
         {:noreply,
