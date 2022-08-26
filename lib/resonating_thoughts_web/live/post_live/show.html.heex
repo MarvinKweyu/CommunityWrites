@@ -1,0 +1,36 @@
+<h1>Show Post</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.post_show_path(@socket, :show, @post)}>
+    <.live_component
+      module={ResonatingThoughtsWeb.PostLive.FormComponent}
+      id={@post.id}
+      title={@page_title}
+      action={@live_action}
+      post={@post}
+      return_to={Routes.post_show_path(@socket, :show, @post)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @post.title %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @post.content %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @post.published %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.post_show_path(@socket, :edit, @post), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.post_index_path(@socket, :index) %></span>
