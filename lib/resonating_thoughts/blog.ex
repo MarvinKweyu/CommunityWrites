@@ -22,6 +22,19 @@ defmodule ResonatingThoughts.Blog do
   end
 
   @doc """
+  Returns the list of published posts.
+
+  ## Examples
+
+      iex> list_published_posts()
+      [%Post{}, ...]
+
+  """
+  def list_published_posts() do
+    from(post in Post, where: post.published == true, select: post) |> Repo.all()
+  end
+
+  @doc """
   Gets a single post.
 
   Raises `Ecto.NoResultsError` if the Post does not exist.

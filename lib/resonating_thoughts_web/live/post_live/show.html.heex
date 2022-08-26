@@ -13,24 +13,11 @@
   </.modal>
 <% end %>
 
-<ul>
+<h2><%= @post.title %></h2>
+<article>
+<%= @post.content %>
+</article>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= @post.content %>
-  </li>
-
-  <li>
-    <strong>Published:</strong>
-    <%= @post.published %>
-  </li>
-
-</ul>
 
 <span><%= live_patch "Edit", to: Routes.post_show_path(@socket, :edit, @post), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.post_index_path(@socket, :index) %></span>

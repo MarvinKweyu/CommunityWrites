@@ -41,6 +41,6 @@ defmodule ResonatingThoughtsWeb.PostLive.Index do
   end
 
   defp list_posts do
-    Blog.list_posts()
+    Blog.list_published_posts()
   end
 end

@@ -13,6 +13,7 @@
   </.modal>
 <% end %>
 
+<%# the below content is for the dashboard %>
 <table>
   <thead>
     <tr>
@@ -39,5 +40,16 @@
     <% end %>
   </tbody>
 </table>
+
+<div id="posts">
+  <%= for post <- @posts do %>
+   
+    <%= live_redirect to: Routes.post_show_path(@socket, :show, post) do %>
+      <div id={"post-#{post.id}"}>
+      <h3><%= post.title %></h3>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <span><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></span>

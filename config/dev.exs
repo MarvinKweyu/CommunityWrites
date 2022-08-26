@@ -25,7 +25,8 @@ config :resonating_thoughts, ResonatingThoughtsWeb.Endpoint,
   secret_key_base: "A+fTP/T8gFxFqOnolQoV1T2aVuc3W0UadstLM/Ionpwk7Jf4mq+f133TjEAL2u2T",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
