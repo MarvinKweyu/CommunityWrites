@@ -1,4 +1,4 @@
-<h1>Listing Posts</h1>
+
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.post_index_path(@socket, :index)}>
@@ -49,19 +49,23 @@
   </tbody>
 </table>
 
+
+<button class="flex justify-end" ><span class="flex justify-end"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) , class: "flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%></span></button>
+
+
 <div id="posts">
   <%= for post <- @posts do %>
    
     <%= live_redirect to: Routes.post_show_path(@socket, :show, post) do %>
-      <div id={"post-#{post.id}"}>
+      <div id={"post-#{post.id}"} class="mt-6">
       <h3 class="text-2xl leading-6 font-bold text-gray-700"><%= post.title %></h3>
-      <article class="text-ellipsis">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec sagittis aliquam malesuada bibendum arcu vitae. Eu mi bibendum neque egestas congue quisque egestas. Fringilla urna porttitor rhoncus dolor purus non enim. Faucibus nisl tincidunt eget nullam non nisi est. Duis at consectetur lorem
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec sagittis aliquam malesuada bibendum arcu vitae. Eu mi bibendum neque egestas congue quisque egestas. Fringilla urna porttitor rhoncus dolor purus non enim. Faucibus nisl tincidunt eget nullam non nisi est. Duis at consectetur lorem
+      <article class="text-ellipsis line-clamp-4">
+      <%= post.content %>
+      
       </article>
       </div>
     <% end %>
   <% end %>
 </div>
 
-<span><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></span>
+

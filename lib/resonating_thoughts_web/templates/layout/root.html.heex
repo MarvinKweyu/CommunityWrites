@@ -10,15 +10,12 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <header>
-      <section class="container">
+    <header class="bg-neutral-100">
+      <section class="container flex justify-between">
+        <h1 class="flex justify-start text-4xl leading-6 font-bold mt-1">Resonating Thoughts</h1>
         <nav>
           <%= render "_user_menu.html", assigns %>
         </nav>
-        <%# <a href="https://marvinkweyu.net/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Resonating Thoughts"/>
-        </a> %>
-        <h1>Resonating Thoughts</h1>
       </section>
     </header>
     <%= @inner_content %>
