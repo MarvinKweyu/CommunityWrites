@@ -6,8 +6,9 @@ defmodule ResonatingThoughtsWeb.PostLive.Index do
 
   @impl true
   def mount(_params, session, socket) do
-    _session_id = Map.get(session, "phauxth_session_id") |> IO.inspect(label: "toeken")
-    {:ok, assign(socket, :posts, list_posts())}
+    _session_id = Map.get(session, "phauxth_session_id")
+    if connected?(socket), do: Blog.subscribe()
+    {:ok, assign(socket, :posts, list_posts()), temporary_assigns: [posts: []]}
   end
 
   @impl true
@@ -28,9 +29,12 @@ defmodule ResonatingThoughtsWeb.PostLive.Index do
   end
 
   defp apply_action(socket, :index, _params) do
+    tags = Blog.list_tags()
+
     socket
-    |> assign(:page_title, "Listing Posts")
+    |> assign(:page_title, "Home Page")
     |> assign(:post, nil)
+    |> assign(:tags, tags)
   end
 
   @impl true
@@ -39,6 +43,12 @@ defmodule ResonatingThoughtsWeb.PostLive.Index do
     {:ok, _} = Blog.delete_post(post)
 
     {:noreply, assign(socket, :posts, list_posts())}
+  end
+
+  @impl true
+  def handle_info({:article_created, post}, socket) do
+    IO.inspect(label: "updating date5")
+    {:noreply, update(socket, :posts, fn posts -> [post | posts] end)}
   end
 
   defp list_posts do

@@ -13,6 +13,7 @@ defmodule ResonatingThoughtsWeb.PostLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
+     |> assign(:comments, Blog.get_comments_of_post(id))
      |> assign(:post, Blog.get_post!(id))}
   end
 

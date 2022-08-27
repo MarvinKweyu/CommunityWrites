@@ -6,7 +6,7 @@ defmodule ResonatingThoughts.Blog do
   import Ecto.Query, warn: false
   alias ResonatingThoughts.Repo
 
-  alias ResonatingThoughts.Blog.Post
+  alias ResonatingThoughts.Blog.{Post, Comment}
 
   @doc """
   Returns the list of posts.
@@ -67,6 +67,7 @@ defmodule ResonatingThoughts.Blog do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+    |> broadcast(:article_created)
   end
 
   @doc """
@@ -101,6 +102,7 @@ defmodule ResonatingThoughts.Blog do
   """
   def delete_post(%Post{} = post) do
     Repo.delete(post)
+    # |> broadcast(:article_deleted)
   end
 
   @doc """
@@ -210,5 +212,28 @@ defmodule ResonatingThoughts.Blog do
   """
   def change_tag(%Tag{} = tag, attrs \\ %{}) do
     Tag.changeset(tag, attrs)
+  end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(ResonatingThoughts.PubSub, "posts")
+  end
+
+  def get_comments_of_post(post_id) do
+    from(comment in Comment,
+      where: comment.post_id == ^post_id,
+      select: %{
+        id: comment.id,
+        content: comment.content,
+        updated_at: comment.updated_at
+      }
+    )
+    |> Repo.all()
+  end
+
+  defp broadcast({:error, _reason} = error, _event), do: error
+
+  defp broadcast({:ok, post}, event) do
+    Phoenix.PubSub.broadcast(ResonatingThoughts.PubSub, "posts", {event, post})
+    {:ok, post}
   end
 end

@@ -15,13 +15,14 @@
 
 
 
-<button class="flex justify-end" ><span class="flex justify-end"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) , class: "flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%></span></button>
+<button class="flex justify-end" ><span class="flex justify-end"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) , class: "inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"%></span></button>
 
 
 <div id="posts">
+
   <%= for post <- @posts do %>
    
-    <%= live_redirect to: Routes.post_show_path(@socket, :show, post) do %>
+    <%= live_redirect to: Routes.post_show_path(@socket, :show, post)  do %>
       <div id={"post-#{post.id}"} class="mt-6">
       <h3 class="text-2xl leading-6 font-bold text-gray-700"><%= post.title %></h3>
       <article class="text-ellipsis line-clamp-4">
