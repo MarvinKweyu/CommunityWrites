@@ -19,4 +19,19 @@ defmodule ResonatingThoughts.BlogFixtures do
 
     post
   end
+
+  @doc """
+  Generate a tag.
+  """
+  def tag_fixture(attrs \\ %{}) do
+    {:ok, tag} =
+      attrs
+      |> Enum.into(%{
+        description: "some description",
+        title: "some title"
+      })
+      |> ResonatingThoughts.Blog.create_tag()
+
+    tag
+  end
 end

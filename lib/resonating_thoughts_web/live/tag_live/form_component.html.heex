@@ -1,0 +1,32 @@
+<div>
+  <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+    <h3 class="text-2xl leading-6 font-bold text-gray-900">
+      <%= @title %>
+    </h3>
+  </div>
+  <.form
+    let={f}
+    for={@changeset}
+    id="tag-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+    <div class="px-4 py-4 sm:px-6 border-b border-gray-200">
+      <div class="grid grid-cols-6 gap-6">
+        <div class="col-span-6">
+          <%= label f, :title, class: "block text-sm font-medium text-gray-700" %>
+          <%= text_input f, :title, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" %>
+          <%= error_tag f, :title %>
+        </div>
+        <div class="col-span-6">
+          <%= label f, :description , class: "block text-sm font-medium text-gray-700"%>
+          <%= text_input f, :description, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" %>
+          <%= error_tag f, :description %>
+        </div>
+        <div>
+          <%= submit "Save", phx_disable_with: "Saving..." , class: "inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"%>
+        </div>
+      </div>
+    </div>
+  </.form>
+</div>
