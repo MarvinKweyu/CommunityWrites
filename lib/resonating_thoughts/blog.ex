@@ -31,7 +31,8 @@ defmodule ResonatingThoughts.Blog do
 
   """
   def list_published_posts() do
-    from(post in Post, where: post.published == true, select: post) |> Repo.all()
+    from(post in Post, where: post.published == true, order_by: [desc: post.id], select: post)
+    |> Repo.all()
   end
 
   @doc """

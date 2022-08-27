@@ -29,8 +29,6 @@ defmodule ResonatingThoughtsWeb.PostLive.FormComponent do
   end
 
   defp save_post(socket, :edit, post_params) do
-    IO.inspect(post_params)
-
     case Blog.update_post(socket.assigns.post, post_params) do
       {:ok, _post} ->
         {:noreply,
@@ -44,6 +42,8 @@ defmodule ResonatingThoughtsWeb.PostLive.FormComponent do
   end
 
   defp save_post(socket, :new, post_params) do
+    post_params = Map.merge(post_params, %{"user_id" => 1})
+
     case Blog.create_post(post_params) do
       {:ok, _post} ->
         {:noreply,

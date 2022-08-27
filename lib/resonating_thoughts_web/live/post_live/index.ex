@@ -1,11 +1,12 @@
 defmodule ResonatingThoughtsWeb.PostLive.Index do
-  use ResonatingThoughtsWeb, :live_view
+  use ResonatingThoughtsWeb, :post_live_view
 
   alias ResonatingThoughts.Blog
   alias ResonatingThoughts.Blog.Post
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
+    _session_id = Map.get(session, "phauxth_session_id") |> IO.inspect(label: "toeken")
     {:ok, assign(socket, :posts, list_posts())}
   end
 

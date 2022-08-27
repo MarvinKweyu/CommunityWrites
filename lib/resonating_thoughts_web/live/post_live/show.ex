@@ -1,5 +1,5 @@
 defmodule ResonatingThoughtsWeb.PostLive.Show do
-  use ResonatingThoughtsWeb, :live_view
+  use ResonatingThoughtsWeb, :post_live_view
 
   alias ResonatingThoughts.Blog
 
