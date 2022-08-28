@@ -1,6 +1,9 @@
 # ResonatingThoughts
 
-> A plublishing platform
+> A publishing platform
+
+
+![ResonatingThoughts](./preview/resonating_thoughts.gif)
 
 To start your Phoenix server:
 
