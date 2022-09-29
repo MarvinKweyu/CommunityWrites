@@ -106,6 +106,7 @@ defmodule ResonatingThoughtsWeb do
       import Phoenix.View
 
       import ResonatingThoughtsWeb.ErrorHelpers
+      import ResonatingThoughtsWeb.ViewHelpers
       import ResonatingThoughtsWeb.Gettext
       alias ResonatingThoughtsWeb.Router.Helpers, as: Routes
     end

@@ -29,6 +29,9 @@
       <%= post.content %>
       
       </article>
+      <div>
+      <span class="text-gray-500 p-2"><%= format_date(post.inserted_at) %></span>
+      </div>
       </div>
     <% end %>
   <% end %>
