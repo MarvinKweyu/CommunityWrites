@@ -37,4 +37,18 @@
   <% end %>
 </div>
 
+<div class="pagination mt-5">
+  <%= if @page_number > 1 do %>
+    <%= live_patch "<< Prev Page",
+      to: Routes.post_index_path(@socket, :index, page: @page_number - 1),
+      class: "pagination-link text-gray-900" %>
+  <% end %>
+
+  <%= if @page_number < @total_pages do %>
+    <%= live_patch "Next Page >>",
+      to: Routes.post_index_path(@socket, :index, page: @page_number + 1),
+      class: "pagination-link text-gray-900" %>
+  <% end %>
+</div>
+
 

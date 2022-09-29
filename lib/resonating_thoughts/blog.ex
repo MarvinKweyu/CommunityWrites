@@ -36,6 +36,24 @@ defmodule ResonatingThoughts.Blog do
   end
 
   @doc """
+  Returns a list of published posts in paginated form
+
+  ## Examples
+  iex> paginate_published_posts(params)
+  [ %{
+      entries: _,
+      page_number: _,
+      page_size: _,
+      total_entries: _,
+      total_pages: _
+    }, ...]
+  """
+  def paginate_published_posts(params \\ []) do
+    from(post in Post, where: post.published == true, order_by: [desc: post.id], select: post)
+    |> Repo.paginate(params)
+  end
+
+  @doc """
   Gets a single post.
 
   Raises `Ecto.NoResultsError` if the Post does not exist.
