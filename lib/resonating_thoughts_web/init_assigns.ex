@@ -8,7 +8,8 @@ defmodule ResonatingThoughtsWeb.InitAssigns do
   # alias ResonatingThoughtsWeb.Router.Helpers, as: Routes
   # alias ResonatingThoughtsWeb.{Accounts}
 
-  def on_mount(:current_user, _params, session, socket) do
+  # ToDo: get current logged in user from the socket
+  def on_mount(:current_user, _params, session, _socket) do
     _session_id = Map.get(session, "phauxth_session_id")
 
     # session_id = case Map.get(session, "phauxth_session_id") do
