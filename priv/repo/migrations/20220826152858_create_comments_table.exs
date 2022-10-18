@@ -1,4 +1,4 @@
-defmodule ResonatingThoughts.Repo.Migrations.CreateCommentsTable do
+defmodule CommunityWrites.Repo.Migrations.CreateCommentsTable do
   use Ecto.Migration
 
   def change do

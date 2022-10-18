@@ -1,4 +1,4 @@
-defmodule ResonatingThoughts.Repo.Migrations.AlterTablePostContent do
+defmodule CommunityWrites.Repo.Migrations.AlterTablePostContent do
   use Ecto.Migration
 
   def change do

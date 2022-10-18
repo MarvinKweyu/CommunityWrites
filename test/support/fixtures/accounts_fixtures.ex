@@ -1,7 +1,7 @@
-defmodule ResonatingThoughts.AccountsFixtures do
+defmodule CommunityWrites.AccountsFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `ResonatingThoughts.Accounts` context.
+  entities via the `CommunityWrites.Accounts` context.
   """
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
@@ -18,7 +18,7 @@ defmodule ResonatingThoughts.AccountsFixtures do
     {:ok, user} =
       attrs
       |> valid_user_attributes()
-      |> ResonatingThoughts.Accounts.register_user()
+      |> CommunityWrites.Accounts.register_user()
 
     user
   end

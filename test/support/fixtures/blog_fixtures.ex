@@ -1,7 +1,7 @@
-defmodule ResonatingThoughts.BlogFixtures do
+defmodule CommunityWrites.BlogFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `ResonatingThoughts.Blog` context.
+  entities via the `CommunityWrites.Blog` context.
   """
 
   @doc """
@@ -15,7 +15,7 @@ defmodule ResonatingThoughts.BlogFixtures do
         published: true,
         title: "some title"
       })
-      |> ResonatingThoughts.Blog.create_post()
+      |> CommunityWrites.Blog.create_post()
 
     post
   end
@@ -30,7 +30,7 @@ defmodule ResonatingThoughts.BlogFixtures do
         description: "some description",
         title: "some title"
       })
-      |> ResonatingThoughts.Blog.create_tag()
+      |> CommunityWrites.Blog.create_tag()
 
     tag
   end
