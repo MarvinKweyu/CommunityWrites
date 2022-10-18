@@ -1,9 +1,9 @@
-defmodule ResonatingThoughts.MixProject do
+defmodule CommunityWrites.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :resonating_thoughts,
+      app: :community_writes,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule ResonatingThoughts.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {ResonatingThoughts.Application, []},
+      mod: {CommunityWrites.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

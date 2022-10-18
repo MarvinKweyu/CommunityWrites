@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :resonating_thoughts,
-  ecto_repos: [ResonatingThoughts.Repo]
+config :community_writes,
+  ecto_repos: [CommunityWrites.Repo]
 
 # Configures the endpoint
-config :resonating_thoughts, ResonatingThoughtsWeb.Endpoint,
+config :community_writes, CommunityWritesWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: ResonatingThoughtsWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: ResonatingThoughts.PubSub,
+  render_errors: [view: CommunityWritesWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: CommunityWrites.PubSub,
   live_view: [signing_salt: "ParRQGMa"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :resonating_thoughts, ResonatingThoughtsWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :resonating_thoughts, ResonatingThoughts.Mailer, adapter: Swoosh.Adapters.Local
+config :community_writes, CommunityWrites.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

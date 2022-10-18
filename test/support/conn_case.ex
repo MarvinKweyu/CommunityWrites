@@ -1,4 +1,4 @@
-defmodule ResonatingThoughtsWeb.ConnCase do
+defmodule CommunityWritesWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule ResonatingThoughtsWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use ResonatingThoughtsWeb.ConnCase, async: true`, although
+  by setting `use CommunityWritesWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule ResonatingThoughtsWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import ResonatingThoughtsWeb.ConnCase
+      import CommunityWritesWeb.ConnCase
 
-      alias ResonatingThoughtsWeb.Router.Helpers, as: Routes
+      alias CommunityWritesWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint ResonatingThoughtsWeb.Endpoint
+      @endpoint CommunityWritesWeb.Endpoint
     end
   end
 
   setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(ResonatingThoughts.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(CommunityWrites.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
@@ -46,7 +46,7 @@ defmodule ResonatingThoughtsWeb.ConnCase do
   test context.
   """
   def register_and_log_in_user(%{conn: conn}) do
-    user = ResonatingThoughts.AccountsFixtures.user_fixture()
+    user = CommunityWrites.AccountsFixtures.user_fixture()
     %{conn: log_in_user(conn, user), user: user}
   end
 
@@ -56,7 +56,7 @@ defmodule ResonatingThoughtsWeb.ConnCase do
   It returns an updated `conn`.
   """
   def log_in_user(conn, user) do
-    token = ResonatingThoughts.Accounts.generate_user_session_token(user)
+    token = CommunityWrites.Accounts.generate_user_session_token(user)
 
     conn
     |> Phoenix.ConnTest.init_test_session(%{})

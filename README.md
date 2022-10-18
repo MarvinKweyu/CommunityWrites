@@ -1,9 +1,9 @@
-# ResonatingThoughts
+# CommunityWrites
 
-> A community publishing platform
+> A community-driven publishing platform
 
 
-![ResonatingThoughts](./preview/resonating_thoughts.gif)
+![CommunityWrites](./preview/community_writes.gif)
 
 ## Local setup
 
@@ -15,6 +15,7 @@ To start your Phoenix server:
 
 Visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## Project direction
+## Project path
 
-**Project board:** https://github.com/users/MarvinKweyu/projects/5/views/1
+**Project board:** 
+[Kanban](https://github.com/users/MarvinKweyu/projects/5/views/1)

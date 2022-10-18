@@ -1,4 +1,4 @@
-defmodule ResonatingThoughts.Repo.Migrations.CreateTags do
+defmodule CommunityWrites.Repo.Migrations.CreateTags do
   use Ecto.Migration
 
   def change do
