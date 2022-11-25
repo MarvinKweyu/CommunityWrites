@@ -1,5 +1,6 @@
 # CommunityWrites
 
+![PhoenixLiveView](https://img.shields.io/badge/PhoenixLiveView-0.17.5-green?style=for-the-badge)
 > A community-driven publishing platform
 
 
@@ -15,6 +16,7 @@ To start your Phoenix server:
 
 Visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+For a similar implementation in Django, locate [Publisher](https://github.com/MarvinKweyu/Publisher)
 ## Project path
 
 **Project board:** 
