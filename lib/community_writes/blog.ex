@@ -254,4 +254,11 @@ defmodule CommunityWrites.Blog do
     Phoenix.PubSub.broadcast(CommunityWrites.PubSub, "posts", {event, post})
     {:ok, post}
   end
+
+  def search_article_by_title_or_content(article_detail) do
+    from(article in Post,
+      where: ilike(article.title, ^"%#{article_detail}%") or ilike(article.content, ^"%#{article_detail}%")
+    )
+    |> Repo.all()
+  end
 end

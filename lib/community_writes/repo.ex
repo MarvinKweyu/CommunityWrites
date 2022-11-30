@@ -3,5 +3,5 @@ defmodule CommunityWrites.Repo do
     otp_app: :community_writes,
     adapter: Ecto.Adapters.Postgres
 
-  use Scrivener, page_size: 1
+  use Scrivener, page_size: 10
 end
