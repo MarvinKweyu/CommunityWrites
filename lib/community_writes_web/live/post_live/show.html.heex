@@ -18,6 +18,28 @@
   <%= @post.content %>
 
 </article>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="post-form"
+  
+    phx-change="validate"
+    phx-submit="save">
+    <div class="px-2 py-2 sm:px-2 border-b border-gray-200">
+      <div class="grid grid-cols-6 gap-6">
+      
+        <div class="col-span-6">
+          <%= label f, :content, class: "block text-sm font-medium text-gray-700"%>
+          <%= textarea f, :content ,rows: "2", class: "mt-1 shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border border-gray-300 rounded-md bg-gray-50 p-2"%>
+          <%= error_tag f, :content %>
+        </div>
+        <div class="">
+          <%= submit "Save",  class: "inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out", phx_disable_with: "Saving..." %>
+        </div>
+      </div>
+    </div>
+  </.form>
 <br>
 <div id="comments" class=" p-4 rounded border-slate-800">
   <%= for comment <- @comments do %>
