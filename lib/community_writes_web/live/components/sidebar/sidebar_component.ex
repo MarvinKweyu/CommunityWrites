@@ -3,7 +3,13 @@ defmodule CommunityWrites.Components.Sidebar.SidebarComponent do
 
   @impl true
   def mount(socket) do
-    {:ok, socket |> assign(:search_result, nil) |> assign(:search, nil)}
+    most_commented = []
+
+    {:ok,
+     socket
+     |> assign(:search_result, nil)
+     |> assign(:search, nil)
+     |> assign(:most_commented, most_commented)}
   end
 
   @impl true
