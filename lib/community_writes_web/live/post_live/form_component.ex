@@ -24,7 +24,6 @@ defmodule CommunityWritesWeb.PostLive.FormComponent do
   end
 
   def handle_event("save", %{"post" => post_params}, socket) do
-    IO.inspect(socket.assigns)
     save_post(socket, socket.assigns.action, post_params)
   end
 

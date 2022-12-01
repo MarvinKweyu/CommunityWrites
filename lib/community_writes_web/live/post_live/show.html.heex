@@ -23,9 +23,7 @@
     let={f}
     for={@changeset}
     id="post-form"
-  
-    phx-change="validate"
-    phx-submit="save">
+    phx-submit="newcomment">
     <div class="px-2 py-2 sm:px-2 border-b border-gray-200">
       <div class="grid grid-cols-6 gap-6">
       
@@ -43,8 +41,12 @@
 <br>
 <div id="comments" class=" p-4 rounded border-slate-800">
   <%= for comment <- @comments do %>
-  
-     <p class="border rounded border-gray-600 p-2"><%= comment.content %></p>
+  <div class="flex mt-1">
+      <div class="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-300">
+         <svg class="absolute -left-1 w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+       </div>
+     <p class="p-2 text-sm"><%= comment.content %></p>
+  </div>
    <% end %>
 </div>
 
