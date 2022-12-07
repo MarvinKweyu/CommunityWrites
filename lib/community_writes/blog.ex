@@ -236,14 +236,11 @@ defmodule CommunityWrites.Blog do
     Phoenix.PubSub.subscribe(CommunityWrites.PubSub, "posts")
   end
 
+  @spec get_comments_of_post(any) :: any
   def get_comments_of_post(post_id) do
     from(comment in Comment,
       where: comment.post_id == ^post_id,
-      select: %{
-        id: comment.id,
-        content: comment.content,
-        updated_at: comment.updated_at
-      }
+      preload: [:user]
     )
     |> Repo.all()
   end
@@ -257,8 +254,29 @@ defmodule CommunityWrites.Blog do
 
   def search_article_by_title_or_content(article_detail) do
     from(article in Post,
-      where: ilike(article.title, ^"%#{article_detail}%") or ilike(article.content, ^"%#{article_detail}%")
+      where:
+        ilike(article.title, ^"%#{article_detail}%") or
+          ilike(article.content, ^"%#{article_detail}%")
     )
     |> Repo.all()
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking comment changes.
+
+  ## Examples
+
+      iex> change_comment(comment)
+      %Ecto.Changeset{data: %Comment{}}
+
+  """
+  def change_comment(%Comment{} = comment, attrs \\ %{}) do
+    Comment.changeset(comment, attrs)
+  end
+
+  def create_comment(attrs \\ %{}) do
+    %Comment{}
+    |> Comment.changeset(attrs)
+    |> Repo.insert()
   end
 end
